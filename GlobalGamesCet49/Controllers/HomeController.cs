@@ -32,8 +32,6 @@ namespace GlobalGamesCet49.Controllers
 
             return View();
         }
-
-
         // POST: Criação do registo em PedidosDeContacto
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -47,6 +45,27 @@ namespace GlobalGamesCet49.Controllers
             }
             return View();
         }
+
+        public IActionResult Inscricoes()
+        {
+
+            return View();
+        }
+        // POST: Criação do registo em Inscricoes
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Inscricoes([Bind("Id,Nome,Apelido,Morada,Localidade,CC,DataNasc")] Inscricao inscricao)
+        {
+            if (ModelState.IsValid)
+            {
+                
+                _context.Add(inscricao);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            return View();
+        }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
