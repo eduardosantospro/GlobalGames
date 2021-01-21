@@ -1,5 +1,4 @@
-﻿@model GlobalGamesCet49.Dados.Entidades.Inscricao
-
+﻿@model GlobalGamesCet49.Models.InscricaoViewModel
 @{
     ViewData["Title"] = "Inscrições";
 }
@@ -9,7 +8,7 @@
 
         <div class="dark">
             <h3>Inscrições</h3>
-            <form class="orcamento" asp-action="Inscricoes">
+            <form class="orcamento" asp-action="Inscricoes" enctype="multipart/form-data">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <table>
                     <tr>
@@ -48,7 +47,7 @@
 
                     <tr>
                         <th>
-                            <label>Cartão de Cidadão</label>
+                            <label>Cartão de Cidadão </label>
                         </th>
                         <th>
                             <input asp-for="CC" class="form-control" placeholder="Cartão de Cidadão" />
@@ -62,6 +61,17 @@
                             <span asp-validation-for="DataNasc" class="text-danger"></span>
                         </th>
                     </tr>
+
+                    <tr>
+                        <th>
+                            <label asp-for="FicheiroDeImagem" class="control-label"></label>
+                        </th>
+                        <th>
+                            <input asp-for="FicheiroDeImagem" class="form-control" type="file" />
+                            <span asp-validation-for="FicheiroDeImagem" class="text-danger"></span>
+                        </th>
+                    </tr>
+
                 </table>
                 <button class="button_1" type="submit">Enviar</button>
             </form>
